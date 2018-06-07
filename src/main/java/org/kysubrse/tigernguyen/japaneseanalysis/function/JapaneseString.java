@@ -1,4 +1,4 @@
-package org.kysubrse.tigernguyen.japaneseanalysis;
+package org.kysubrse.tigernguyen.japaneseanalysis.function;
 
 
 import java.util.ArrayList;
@@ -59,6 +59,10 @@ public class JapaneseString {
     public static boolean isKanji( char c) {
         return (c>=0x4e00 && c<0xa000) || // CJK unified ideographs
             c == '\u3005'; // kanji repeat mark
+    }
+    
+    public static boolean containsAlphabet(String s) {
+    	return s.matches(".*[a-zA-Z]+.*");
     }
 
     public static String toHiragana( String s) {
@@ -140,6 +144,8 @@ public class JapaneseString {
      * {@link #isKanji(char) isKanji} method.
      */
     public static boolean containsKanji( String word) {
+    	if(word == null || word.equals(""))
+    		return false;
         for ( int i=0; i<word.length(); i++) {
             if (isKanji( word.charAt( i))) {
                 return true;
@@ -154,6 +160,8 @@ public class JapaneseString {
      * {@link #isKatanana(char) isKatakana} method.
      */
     public static boolean containsKatakana( String word) {
+    	if(word == null || word.equals(""))
+    		return false;
         for ( int i=0; i<word.length(); i++) {
             if (isKatakana(word.charAt( i))) {
                 return true;

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kysubrse.tigernguyen.japaneseanalysis.controller.MyController">
+   <children>
+      <TextArea fx:id="taInputData" layoutX="40.0" layoutY="43.0" wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="50.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></TextArea>
+      <Button fx:id="btnAnalysis" layoutX="40.0" layoutY="220.0" mnemonicParsing="false" onAction="#Analysis" prefHeight="28.0" prefWidth="128.0" text="ANALYSIS" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="220.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tbvOutputData" layoutX="64.0" layoutY="500.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="280.0">
+      </TableView>
+      <Button fx:id="btnLoadFile" layoutX="40.0" layoutY="14.0" mnemonicParsing="false" onAction="#LoadFile" prefHeight="28.0" prefWidth="128.0" text="LOAD FILE" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnExport" layoutX="415.0" layoutY="542.0" mnemonicParsing="false" onAction="#Export" prefHeight="28.0" prefWidth="128.0" text="EXPORT" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="200.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnLearn" layoutX="565.0" layoutY="542.0" mnemonicParsing="false" onAction="#Learn" prefHeight="28.0" prefWidth="128.0" text="LEARN" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="40.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
