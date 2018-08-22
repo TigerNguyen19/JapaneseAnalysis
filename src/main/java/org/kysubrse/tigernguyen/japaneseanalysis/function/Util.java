@@ -17,9 +17,9 @@ public class Util {
 		for (String string : dataList) {
 			strLineArr = string.split("#");
 			if (strLineArr.length > 3) {
-				if (strLineArr[2].contains("Åu " + word + " Åv") || (strLineArr[2].equals(word))) {
+				if (strLineArr[2].contains("„Äå " + word + " „Äç") || (strLineArr[2].equals(word))) {
 					return OutputFormat(strLineArr[3]);
-				} else if (strLineArr[3].contains("Åu " + word + " Åv")) {
+				} else if (strLineArr[3].contains("„Äå " + word + " „Äç")) {
 					return OutputFormat(strLineArr[3], word);
 				}
 			}
@@ -66,7 +66,7 @@ public class Util {
 			return "";
 		String[] strOutput = strResult.replaceAll("\\|-\\|\\=", "\\|\\=").replaceAll("\\|\\=\\|\\=", "\\|\\=").split("\\|\\=");
 		for (int count = 0; count < strOutput.length; count++) {
-			if (strOutput[count].contains("Åu " + word + " Åv") && count < strOutput.length - 2) {
+			if (strOutput[count].contains("ÔøΩu " + word + " ÔøΩv") && count < strOutput.length - 2) {
 				for (int countWord = count; countWord < strOutput.length; countWord++)
 					if (!strOutput[countWord + 1].equals("")) {
 						if(countWord <= strOutput.length - 3 && JapaneseString.containsAlphabet(strOutput[countWord + 2])) {
