@@ -12,20 +12,21 @@ public class Util {
 	public static final String FILENAMEKATA = fileKanji.getAbsolutePath();
 
 	// Find word from dictionary with input = kanji
-	public static String findWord(List<String> dataList, String word) {
-		String[] strLineArr;
-		for (String string : dataList) {
-			strLineArr = string.split("#");
-			if (strLineArr.length > 3) {
-				if (strLineArr[2].contains("「 " + word + " 」") || (strLineArr[2].equals(word))) {
-					return OutputFormat(strLineArr[3]);
-				} else if (strLineArr[3].contains("「 " + word + " 」")) {
-					return OutputFormat(strLineArr[3], word);
+		public static String findWord(List<String> dataList, String word) {
+			String[] strLineArr;
+			for (String string : dataList) {
+				strLineArr = string.split("#");
+				if (strLineArr.length > 3) {
+					// Fix it if not show VN 「 ==> Open file dd and copy paste
+					if (strLineArr[2].contains("「 " + word + " 」") || (strLineArr[2].equals(word))) {
+						return OutputFormat(strLineArr[3]);
+					} else if (strLineArr[3].contains("「 " + word + " 」")) {
+						return OutputFormat(strLineArr[3], word);
+					}
 				}
 			}
+			return "";
 		}
-		return "";
-	}
 
 	// Find word from dictionary with input = katanana
 	public static String findWordKata(List<String> dataList, String word) {
@@ -51,9 +52,10 @@ public class Util {
 	}
 
 	private static String OutputFormat(String strResult) {
-		String[] strOutput = strResult.replaceAll("\\|-\\|\\=", "\\|\\=").replaceAll("\\|\\=\\|\\=", "\\|\\=").split("\\|\\=");
+		String[] strOutput = strResult.replaceAll("\\|-\\|\\=", "\\|\\=").replaceAll("\\|\\=\\|\\=", "\\|\\=")
+				.split("\\|\\=");
 		if (strOutput.length > 0) {
-			if(strResult.startsWith("|=") && strOutput.length > 2 && JapaneseString.containsAlphabet(strOutput[2])) {
+			if (strResult.startsWith("|=") && strOutput.length > 2 && JapaneseString.containsAlphabet(strOutput[2])) {
 				return (strOutput[1] + " | " + strOutput[2]);
 			}
 			return (strOutput[1]);
@@ -64,12 +66,14 @@ public class Util {
 	private static String OutputFormat(String strResult, String word) {
 		if (strResult.trim() == "")
 			return "";
-		String[] strOutput = strResult.replaceAll("\\|-\\|\\=", "\\|\\=").replaceAll("\\|\\=\\|\\=", "\\|\\=").split("\\|\\=");
+		String[] strOutput = strResult.replaceAll("\\|-\\|\\=", "\\|\\=").replaceAll("\\|\\=\\|\\=", "\\|\\=")
+				.split("\\|\\=");
 		for (int count = 0; count < strOutput.length; count++) {
-			if (strOutput[count].contains("�u " + word + " �v") && count < strOutput.length - 2) {
+			if (strOutput[count].contains("「 " + word + " 」") && count < strOutput.length - 2) {
 				for (int countWord = count; countWord < strOutput.length; countWord++)
 					if (!strOutput[countWord + 1].equals("")) {
-						if(countWord <= strOutput.length - 3 && JapaneseString.containsAlphabet(strOutput[countWord + 2])) {
+						if (countWord <= strOutput.length - 3
+								&& JapaneseString.containsAlphabet(strOutput[countWord + 2])) {
 							return (strOutput[countWord + 1] + " | " + strOutput[countWord + 2]);
 						}
 						return strOutput[countWord + 1];
